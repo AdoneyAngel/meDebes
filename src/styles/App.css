@@ -16,9 +16,10 @@ body {
 }
 input {
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     padding: 5px 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.103);
+    outline: none;
 }
 h1 {
     font-size: 1.7rem;

@@ -8,7 +8,7 @@
 .whiteBackground {
     background: white;
     width: 150%;
-    height: 80%;
+    height: 650px;
     position: absolute;
     top: 0;
     left: 50%;
@@ -26,8 +26,9 @@
     text-align: center;
     width: 100%;
     display: block;
-    margin-top: 30%;
-    font-weight: normal;
+    margin-top: 105px;
+    margin-bottom: 100px;
+    font-weight: 600;
 }
 
 .formContent {
@@ -35,10 +36,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 75%;
+    margin: auto;
 }
 .formContent input {
     background: #D9D9D9;
     box-shadow: none;
     display: block;
-    width: 70%;
+    width: 100%;
+    padding: 15px 15px;
+    margin-bottom: 30px;
+}
+.formContent label {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 18px;
+    padding-left: 10px;
+    font-size: 23px;
+    font-weight: 500;
+}
+.loginButton {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--primary-red) -5%, var(--primary-green));
+    background-size: 200%;
 }

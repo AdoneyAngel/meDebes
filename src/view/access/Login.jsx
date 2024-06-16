@@ -5,6 +5,9 @@ function Login() {
             <form className="formContent">
                 <label>Correo electrónico</label>
                 <input type="mail" required/>
+                <label>Contraseña</label>
+                <input type="password" required/>
+                <button className="loginButton">Entrar</button>
             </form>
         </div>
     )
