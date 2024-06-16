@@ -16,8 +16,18 @@ class User {
 
     static async getUsers() {        
 
-        Axios.get(process.env.REACT_APP_API_URL + "/getUsers").then(res => {
-            return res.data
+        return await Axios.get(process.env.REACT_APP_API_URL + "/getUsers").then(res => {
+            return res
+        })
+    }
+
+    static async getUserByMail(mail) {
+        console.log("ejecutando: " + mail)
+
+        return await Axios.post(process.env.REACT_APP_API_URL + "/getUserByMail", {
+            mail: mail
+        }).then(res => {
+            return res
         })
     }
 }

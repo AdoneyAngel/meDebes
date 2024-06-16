@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom"
 //Views
 import Access from "./view/access/Access.jsx"
 import Login from "./view/access/Login.jsx"
+import SignUp from "./view/access/SignUp.jsx"
 
 const router = createBrowserRouter([
     {
@@ -12,8 +13,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "login",
-                element: <Login />,
-                basename: "login"
+                element: <Login />
+            },
+            {
+                path: "signup",
+                element: <SignUp />,
             }
         ]
     }
