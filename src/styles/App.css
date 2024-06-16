@@ -3,6 +3,7 @@
     padding: 0;
     font-family: "Open Sans", sans-serif;
     font-size: 20px;
+    transition: .5s;
 }
 :root {
     --primary-green: #92FF96;

@@ -37,7 +37,9 @@
     justify-content: center;
     align-items: center;
     width: 75%;
-    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
 }
 .formContent input {
     background: #D9D9D9;
@@ -64,4 +66,20 @@
     margin-top: 70px;
     font-size: 22px;
     color: white;
+}
+#passwordForm {
+    animation: showForm 1s ease-in-out;
+}
+.formHidden {
+    opacity: 0;
+    scale: .9;
+}
+
+@keyframes showForm {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

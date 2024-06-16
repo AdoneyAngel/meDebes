@@ -17,17 +17,21 @@ class User {
     static async getUsers() {        
 
         return await Axios.get(process.env.REACT_APP_API_URL + "/getUsers").then(res => {
-            return res
+            return res.data[0]
+        })
+    }
+
+    static async getUserByName(name) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/getUserByName", {name})
+        .then(res => {
+            return res.data[0]
         })
     }
 
     static async getUserByMail(mail) {
-        console.log("ejecutando: " + mail)
-
-        return await Axios.post(process.env.REACT_APP_API_URL + "/getUserByMail", {
-            mail: mail
-        }).then(res => {
-            return res
+        return await Axios.post(process.env.REACT_APP_API_URL + "/getUserByMail", {mail})
+        .then(res => {
+            return res.data[0]
         })
     }
 }
