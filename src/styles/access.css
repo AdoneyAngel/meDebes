@@ -1,0 +1,42 @@
+#accessView {
+    background: linear-gradient(90deg, var(--primary-red) 10%, var(--primary-green));
+    height: 100dvh;
+    width: 100%;
+}
+.whiteBackground {
+    background: white;
+    width: 150%;
+    height: 80%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    border-bottom-left-radius: 100dvw;
+    border-bottom-right-radius: 100dvw;
+}
+.accessContent {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+}
+.accessContent h1 {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 30%;
+    font-weight: normal;
+}
+
+.formContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.formContent input {
+    background: #D9D9D9;
+    box-shadow: none;
+    display: block;
+    width: 70%;
+}

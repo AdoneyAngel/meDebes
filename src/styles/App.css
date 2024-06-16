@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+}
+:root {
+    --primary-green: #92FF96;
+    --primary-red: #FF8970;
+}
+
+body {
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+}
+input {
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.103);
+}
+h1 {
+    font-size: 1.7rem;
+}
