@@ -8,10 +8,12 @@ const router = createBrowserRouter([
     {
         path: "/access",
         element: <Access />,
+        basename: "access",
         children: [
             {
                 path: "login",
-                element: <Login />
+                element: <Login />,
+                basename: "login"
             }
         ]
     }

@@ -14,7 +14,7 @@ function Access() {
     //Si se encuentra en la raiz de "Acces", se direcciona automaticamente al login
 
     useEffect(() => {
-        if (router.basename == "/") {
+        if (router.basename === "/") {
             routeNavigation("login")
         }
     }, [])
