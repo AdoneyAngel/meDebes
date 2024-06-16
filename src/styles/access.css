@@ -2,6 +2,8 @@
     background: linear-gradient(90deg, var(--primary-red) 10%, var(--primary-green));
     height: 100dvh;
     width: 100%;
+    overflow: hidden;
+    position: relative;
 }
 .whiteBackground {
     background: white;
