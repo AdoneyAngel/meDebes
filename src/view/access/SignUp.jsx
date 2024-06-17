@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import User from "../../model/User"
 import NotifyErr from "../../components/Notify"
 import FullScreenLoading from "../../components/FullScreenLoading"
+import { Link } from "react-router-dom"
 
 
 function SignUp() {
@@ -109,7 +110,7 @@ function SignUp() {
             {
                 notifyErr ? <NotifyErr text={notifyErrTxt} onClick={hiddeNotifyErr}/> : null
             }
-            <h1>Acceder</h1>
+            <h1>Crear cuenta</h1>
             <form onSubmit={e => validateNameMail(e)} className="formContent" id="dataForm">
 
                 <label>Nombre</label>
@@ -117,7 +118,9 @@ function SignUp() {
                 <label>Correo electrónico</label>
                 <input onChange={(e) => setMail(e.target.value)} type="email" required/>
 
-                <button className="loginButton">Entrar</button>
+                <Link className="switchFormButton" to="/access/login">Ya tienes cuenta</Link>
+
+                <button className="loginButton">Crear</button>
             </form>
 
             {
@@ -125,7 +128,7 @@ function SignUp() {
                     <form onSubmit={e => signUp(e)} id="passwordForm" className="formContent">
                         <label>Contraseña</label>
                         <input onChange={(e) => setPassword(e.target.value)} type="password" required/>
-                        <button className="loginButton">Entrar</button>
+                        <button className="loginButton">Crear</button>
                     </form>                    
                 )  : null
             }

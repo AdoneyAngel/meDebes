@@ -63,7 +63,7 @@
     border-radius: 100px;
     background: linear-gradient(90deg, var(--primary-red) -50%, var(--primary-green));
     background-size: 100dvw;
-    margin-top: 70px;
+    margin-top: 50px;
     font-size: 22px;
     color: white;
 }
@@ -73,6 +73,10 @@
 .formHidden {
     opacity: 0;
     scale: .9;
+}
+
+.switchFormButton {
+    text-decoration: none;
 }
 
 @keyframes showForm {

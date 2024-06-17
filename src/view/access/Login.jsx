@@ -2,6 +2,7 @@ import { useState } from "react"
 import NotifyErr from "../../components/Notify"
 import User from "../../model/User"
 import FullScreenLoading from "../../components/FullScreenLoading"
+import { Link } from "react-router-dom"
 
 function Login() {
 
@@ -63,6 +64,7 @@ function Login() {
                 <input onChange={(e) => setMail(e.target.value)} type="email" required/>
                 <label>Contraseña</label>
                 <input onChange={(e) => setPassword(e.target.value)} type="password" required/>
+                <Link className="switchFormButton" to="/access/signup">Crear cuenta</Link>
                 <button className="loginButton">Entrar</button>
             </form>
         </div>
