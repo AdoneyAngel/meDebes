@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import User from "../../model/User"
 import NotifyErr from "../../components/Notify"
+import FullScreenLoading from "../../components/FullScreenLoading"
 
 
 function SignUp() {
@@ -9,6 +10,7 @@ function SignUp() {
     const [password, setPassword] = new useState("")
 
     const [validNameMail, setValidNameMail] = new useState(false)
+    const [fullScreenLoading, setFullScreenLoading] = new useState(false)
     
     //Message error states
     const [notifyErrTxt, setNotifyErrTxt] = new useState("")
@@ -28,8 +30,18 @@ function SignUp() {
         setNotifyErrTxt("")
     }
 
+    const showFullScreenLoading = () => {
+        setFullScreenLoading(true)
+    }
+    const hiddeFullScreenLoading = () => {
+        setFullScreenLoading(false)
+    }
+
     const validateNameMail = async (e) => {
         e.preventDefault()
+
+        //Set loading
+        showFullScreenLoading()
 
         //Check if mail exist
 
@@ -43,14 +55,18 @@ function SignUp() {
                     if (nameRes.length > 0) {
                         setValidNameMail(false)
                         showNotifyErr("El nombre ya está en uso")
+                        hiddeFullScreenLoading()
 
                     } else {
                         setValidNameMail(true)
+                        hiddeFullScreenLoading()
                     }
                 })
 
             } else {
                 showNotifyErr("El correo electrónico ya está en uso")
+                hiddeFullScreenLoading()
+                
             }
         })
     }
@@ -65,6 +81,7 @@ function SignUp() {
 
     return (
         <div id="signUpView">
+            {fullScreenLoading ? <FullScreenLoading /> : null}
             {
                 notifyErr ? <NotifyErr text={notifyErrTxt} onClick={hiddeNotifyErr}/> : null
             }

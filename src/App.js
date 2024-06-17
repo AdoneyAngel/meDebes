@@ -9,11 +9,8 @@ import LocalData from './model/localData.js';
 import User from './model/User.js';
 
 //Components
-import FullScreenLoading from './components/FullScreenLoading.jsx';
 
 function App() {
-
-  const [fullScreenLoading, setFullScreenLoading] = useState(true)
 
   useEffect(() => {
 
@@ -22,13 +19,8 @@ function App() {
     }
   })
 
-  const showFullScreenLoading = () => {
-    setFullScreenLoading(true)
-  }
-
   return (
     <>
-      {fullScreenLoading ? <FullScreenLoading /> : null}
       <RouterProvider router={router}/>
     </>
     
