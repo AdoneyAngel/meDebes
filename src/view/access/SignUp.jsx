@@ -138,6 +138,7 @@ function SignUp() {
                     <form onSubmit={e => signUp(e)} id="passwordForm" className="formContent">
                         <label>Contraseña</label>
                         <input onChange={(e) => setPassword(e.target.value)} type="password" required/>
+                        <Link className="switchFormButton" to="/access/login">Ya tienes cuenta</Link>
                         <button className="loginButton">Crear</button>
                     </form>                    
                 )  : null
