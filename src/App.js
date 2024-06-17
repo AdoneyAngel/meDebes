@@ -8,13 +8,16 @@ import LocalData from './model/localData.js';
 //Classes
 import User from './model/User.js';
 
-//Components
+//Component;
 
 function App() {
 
   useEffect(() => {
 
-    if(!LocalData.isLogged() && (router.state.location.pathname != "/access" && router.state.location.pathname !== "/access/login" && router.state.location.pathname !== "/access/signup")) {
+    if(!LocalData.isLogged() 
+      && (router.state.location.pathname != "/access" 
+      && router.state.location.pathname !== "/access/login"
+      && router.state.location.pathname !== "/access/signup")) {
       router.navigate("/access")
     }
   })
@@ -24,7 +27,7 @@ function App() {
       <RouterProvider router={router}/>
     </>
     
-  );
+  )
 }
 
-export default App;
+export default App

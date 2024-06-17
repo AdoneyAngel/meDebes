@@ -3,20 +3,24 @@ class LocalData {
         localStorage.setItem(name, value)
     }
     static getData(name) {
-        localStorage.getItem(name)
+        return localStorage.getItem(name)
     }
     static isLogged() {
         const mail = localStorage.getItem("mail")
         const name = localStorage.getItem("name")
+        const id = localStorage.getItem("id")
     
-        if (mail && name) {
-            return true
+        if (mail && name && id) {
+            if (mail !== undefined && name !== undefined && id !== undefined) {
+                return true
+            }
     
         } else {
             return false
         }
     }
-    static login(mail, name) {
+    static login(id, mail, name) {
+        this.addData("id", id)
         this.addData("mail", mail)
         this.addData("name", name)
     }

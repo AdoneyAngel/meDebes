@@ -1,0 +1,18 @@
+#pageHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: white;
+    width: 100%;
+}
+#pageHeader > button {
+    height: 100%;
+    width: 50px;
+    background: transparent;
+}
+#pageHeader > button > img {
+    height: 100%;
+}

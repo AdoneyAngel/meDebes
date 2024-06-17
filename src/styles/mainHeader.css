@@ -1,0 +1,34 @@
+#mainHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 45px;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 20px);
+}
+#mainHeader img {
+    height: 100%;
+}
+#addReturnButton {
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+#addReturnButton > img {
+    width: 70%;
+    height: 70%;
+}
+#contactsButton {
+    margin-left: auto;
+    text-decoration: none;
+    color: black;
+    background: #dfdfdf;
+    padding: 5px 15px;
+    border-radius: 100px;
+}

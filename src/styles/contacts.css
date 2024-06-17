@@ -1,0 +1,48 @@
+#contactsView h1{
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    font-weight: 600;
+}
+#contactsView .body {
+    width: 85%;
+    display: block;
+    margin: auto;
+}
+#contactsView .body > button{
+    margin-left: auto;
+    display: block;
+    border-radius: 100px;
+    padding: 5px 15px;
+    font-size: .9rem;
+}
+.contactList {
+    margin-top: 20px;
+}
+.contactItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.329);
+    margin: 10px 0;
+}
+.contactNickname {
+    font-weight: bold;
+}
+.contactMail {
+    font-size: 13px;
+    margin-left: auto;
+    text-align: right;
+    margin-top: auto;
+    transform: translateY(10px);
+    opacity: .5;
+}
+.contactList {
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 0 5px;
+}

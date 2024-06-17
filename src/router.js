@@ -4,6 +4,8 @@ import { createBrowserRouter } from "react-router-dom"
 import Access from "./view/access/Access.jsx"
 import Login from "./view/access/Login.jsx"
 import SignUp from "./view/access/SignUp.jsx"
+import Main from "./view/main/Main.jsx"
+import Contacts from "./view/main/Contacts.jsx"
 
 const router = createBrowserRouter([
     {
@@ -20,6 +22,16 @@ const router = createBrowserRouter([
                 element: <SignUp />
             }
         ]
+    },
+    {
+        path: "/",
+        element: <Main />,
+        basename: "main"
+    },
+    {
+        path: "/contacts",
+        element: <Contacts />,
+        basename: "contacts"
     }
 ])
 

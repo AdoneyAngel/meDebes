@@ -26,6 +26,12 @@ input {
 h1 {
     font-size: 1.7rem;
 }
+button {
+    background: #dfdfdf;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
 button:hover {
     filter: brightness(.95);
     transition: .3s;

@@ -2,9 +2,11 @@ import { useState } from "react"
 import NotifyErr from "../../components/Notify"
 import User from "../../model/User"
 import FullScreenLoading from "../../components/FullScreenLoading"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 function Login() {
+
+    const routerNavigation = useNavigate()
 
     const [mail, setMail] = new useState("")
     const [password, setPassword] = new useState("")
@@ -69,6 +71,8 @@ function Login() {
                 User.loginLocal(mail)
                 .then(() => {
                     hiddeFullScreenLoading()
+
+                    routerNavigation("/")
                 })
 
             } else {

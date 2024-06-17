@@ -2,10 +2,12 @@ import { useEffect, useState } from "react"
 import User from "../../model/User"
 import NotifyErr from "../../components/Notify"
 import FullScreenLoading from "../../components/FullScreenLoading"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 function SignUp() {
+    const routerNavigation = useNavigate()
+
     const [name, setName] = new useState("")
     const [mail, setMail] = new useState("")
     const [password, setPassword] = new useState("")
@@ -96,6 +98,8 @@ function SignUp() {
                     User.loginLocal(mail)
                     .then(() => {
                         hiddeFullScreenLoading()
+
+                        routerNavigation("/")
                     })
 
                 } else {

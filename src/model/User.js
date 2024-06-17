@@ -2,9 +2,9 @@ import Axios from "axios"
 import LocalData from "./localData"
 
 class User {
-    constructor(name, mail) {
-        this.name = name
-        this.mail = mail
+    constructor() {
+        this.name = ""
+        this.mail = ""
     }
 
     static async createUser(name, mail, password) {
@@ -33,27 +33,30 @@ class User {
     static async getUserByName(name) {
         return await Axios.post(process.env.REACT_APP_API_URL + "/getUserByName", {name})
         .then(res => {
-            return res.data[0]
+            return res.data[0][0]
         })
     }
 
     static async getUserByMail(mail) {
         return await Axios.post(process.env.REACT_APP_API_URL + "/getUserByMail", {mail})
         .then(res => {
-            return res.data[0]
+            return res.data[0][0]
         })
     }
 
     static async getUserProfileByMail(mail) {
         return await Axios.post(process.env.REACT_APP_API_URL + "/getUserProfileByMail", {mail})
         .then(res => {
-            return res.data
+            return res.data[0][0]
         })
     }
 
     static async loginLocal(mail) {
-        await this.getUserProfileByMail(mail).then(userProfile => {
-            LocalData.login(mail, userProfile.name)
+        await this.getUserByMail(mail).then(userProfile => {
+
+            console.log(userProfile.name)
+
+            LocalData.login(userProfile.id, mail, userProfile.name)
 
             return true
         })
