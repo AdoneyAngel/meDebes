@@ -8,6 +8,7 @@
 :root {
     --primary-green: #92FF96;
     --primary-red: #FF8970;
+    --warning-red: rgb(255, 51, 0);
 }
 
 body {
@@ -24,4 +25,12 @@ input {
 }
 h1 {
     font-size: 1.7rem;
+}
+button:hover {
+    filter: brightness(.95);
+    transition: .3s;
+}
+button:active {
+    filter: brightness(.9);
+    transition: .2s;
 }

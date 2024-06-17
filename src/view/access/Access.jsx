@@ -1,9 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom"
+import router from "../../router";
 
 import "../../styles/access.css"
-
-import router from "../../router";
 
 //Components
 

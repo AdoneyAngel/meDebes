@@ -1,0 +1,24 @@
+#notify {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 10;
+    background: var(--warning-red);
+    padding: 10px;
+    border-radius: 10px;
+    width: 80%;
+    color: white;
+    animation: showNotify .5s ease-in-out;
+}
+#notify p {
+    font-size: 18px;
+}
+@keyframes showNotify {
+    0%{
+        transform: translate(-50%, -100px);
+    }
+    100%{
+        transform: translate(-50%, 0px);
+    }
+}
