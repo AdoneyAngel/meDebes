@@ -7,11 +7,19 @@ class User {
     }
 
     static async createUser(name, mail, password) {
-        Axios.get(process.env.REACT_APP_API_URL + "/")
+        return await Axios.post(process.env.REACT_APP_API_URL + "/createUser", {name, mail, password})
+        .then(res => {
+            return res.data
+        })
     }
 
     static async login(mail, password) {
-        
+        if (mail && password) {
+            return await Axios.get(process.env.REACT_APP_API_URL + "/login"), {mail, password}
+            .then(res => {
+                return res.data
+            })
+        }
     }
 
     static async getUsers() {        

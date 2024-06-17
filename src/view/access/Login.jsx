@@ -1,12 +1,67 @@
+import { useState } from "react"
+import NotifyErr from "../../components/Notify"
+import User from "../../model/User"
+import FullScreenLoading from "../../components/FullScreenLoading"
+
 function Login() {
+
+    const [mail, setMail] = new useState("")
+    const [password, setPassword] = new useState("")
+
+    //NotifyErr
+    const [notifyErr, setNotifyErr] = new useState(false)
+    const [notifyErrTxt, setNotifyErrTxt] = new useState("")
+
+    //Set loading
+    const [fullScreenLoading, setFullScreenLoading] = new useState(false)
+
+    const showFullScreenLoading = () => {
+        setFullScreenLoading(true)
+    }
+    const hiddeFullScreenLoading = () => {
+        setFullScreenLoading(false)
+    }
+
+    const showNotifyErr = (text) => {
+        setNotifyErr(false)
+        
+        setTimeout(() => {
+            setNotifyErrTxt(text)
+            setNotifyErr(true)            
+        }, 100);
+    }
+    const hiddeNotifyErr = () => {
+        setNotifyErr(false)
+        setNotifyErrTxt("")
+    }
+
+    const login = async (e) => {
+        e.preventDefault()
+
+        showFullScreenLoading()
+
+        User.login(mail, password).then(res => {
+            hiddeFullScreenLoading()
+
+            if (res) {
+                console.log("Login susccessfull")
+
+            } else {
+                showNotifyErr("Correo o contraseña incorrecta")
+            }
+        })
+    }
+
     return (
         <div id="loginView">
+            {notifyErr ? <NotifyErr text={notifyErrTxt} onClick={hiddeNotifyErr}/> : null}
+            {fullScreenLoading ? <FullScreenLoading /> : null} 
             <h1>Acceder</h1>
-            <form className="formContent">
+            <form onSubmit={e => login(e)} className="formContent">
                 <label>Correo electrónico</label>
-                <input type="mail" required/>
+                <input onChange={(e) => setMail(e.target.value)} type="email" required/>
                 <label>Contraseña</label>
-                <input type="password" required/>
+                <input onChange={(e) => setPassword(e.target.value)} type="password" required/>
                 <button className="loginButton">Entrar</button>
             </form>
         </div>

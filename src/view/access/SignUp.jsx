@@ -71,6 +71,28 @@ function SignUp() {
         })
     }
 
+    const signUp = async (e) => {
+        e.preventDefault()
+
+        if (password.length > 0) {
+            showFullScreenLoading()
+            
+            User.createUser(name, mail, password).then(res => {
+                hiddeFullScreenLoading()
+
+                console.log(res)
+
+                if (res) {
+                    console.log("Sign up successfull")
+
+                } else {
+                    console.log("Sign up failed")
+                    showNotifyErr("Ha ocurrido algo al intentar iniciar sesion")
+                }
+            })
+        }
+    }
+
     useEffect(() => {
         if (validNameMail) {
             const dataForm = document.getElementById("dataForm")
@@ -98,7 +120,7 @@ function SignUp() {
 
             {
                 validNameMail ? (
-                    <form id="passwordForm" className="formContent">
+                    <form onSubmit={e => signUp(e)} id="passwordForm" className="formContent">
                         <label>Contraseña</label>
                         <input onChange={(e) => setPassword(e.target.value)} type="password" required/>
                         <button className="loginButton">Entrar</button>
