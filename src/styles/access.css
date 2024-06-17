@@ -8,7 +8,7 @@
 .whiteBackground {
     background: white;
     width: 150%;
-    height: 650px;
+    height: 610px;
     position: absolute;
     top: 0;
     left: 50%;
@@ -26,8 +26,8 @@
     text-align: center;
     width: 100%;
     display: block;
-    margin-top: 105px;
-    margin-bottom: 80px;
+    margin-top: 70px;
+    margin-bottom: 70px;
     font-weight: 600;
 }
 

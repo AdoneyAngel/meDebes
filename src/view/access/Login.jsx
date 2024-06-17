@@ -38,6 +38,7 @@ function Login() {
     const login = async (e) => {
         e.preventDefault()
 
+        hiddeNotifyErr()
         showFullScreenLoading()
 
         User.login(mail, password).then(res => {

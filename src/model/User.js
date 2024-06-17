@@ -15,7 +15,7 @@ class User {
 
     static async login(mail, password) {
         if (mail && password) {
-            return await Axios.get(process.env.REACT_APP_API_URL + "/login"), {mail, password}
+            return await Axios.post(process.env.REACT_APP_API_URL + "/login", {mail, password})
             .then(res => {
                 return res.data
             })

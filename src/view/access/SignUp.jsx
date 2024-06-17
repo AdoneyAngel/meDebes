@@ -74,8 +74,10 @@ function SignUp() {
     const signUp = async (e) => {
         e.preventDefault()
 
+
         if (password.length > 0) {
             showFullScreenLoading()
+            hiddeNotifyErr()
             
             User.createUser(name, mail, password).then(res => {
                 hiddeFullScreenLoading()
