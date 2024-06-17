@@ -16,6 +16,10 @@ class LocalData {
             return false
         }
     }
+    static login(mail, name) {
+        this.addData("mail", mail)
+        this.addData("name", name)
+    }
 }
 
 export default LocalData

@@ -3,17 +3,32 @@
     top: 10px;
     left: 50%;
     transform: translate(-50%, 0%);
-    z-index: 10;
-    background: var(--warning-red);
+    z-index: 1000;
     padding: 10px;
     border-radius: 10px;
     width: 80%;
+    max-width: 450px;
     color: white;
     animation: showNotify .5s ease-in-out;
 }
 #notify p {
     font-size: 18px;
 }
+
+.notifyErr {
+    background: var(--warning-red);
+}
+.notifyErr p {
+    color: white;
+}
+
+.notify {
+    background: var(--primary-green);
+}
+.notify p {
+    color: black;
+}
+
 @keyframes showNotify {
     0%{
         transform: translate(-50%, -100px);

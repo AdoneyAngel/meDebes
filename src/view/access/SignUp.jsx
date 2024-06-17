@@ -47,13 +47,16 @@ function SignUp() {
         //Check if mail exist
 
         await User.getUserByMail(mail).then(async mailRes => {
-            
-            if (mailRes.length === 0) {
+
+            if (!mailRes.length) {
+                console.log(mailRes)
 
                 //If dont exist, check if name exist
 
                 await User.getUserByName(name).then(nameRes => {
-                    if (nameRes.length > 0) {
+                    console.log(nameRes)
+                    if (nameRes.length) {
+                        
                         setValidNameMail(false)
                         showNotifyErr("El nombre ya está en uso")
                         hiddeFullScreenLoading()
@@ -87,6 +90,13 @@ function SignUp() {
 
                 if (res) {
                     console.log("Sign up successfull")
+
+                    showFullScreenLoading()
+
+                    User.loginLocal(mail)
+                    .then(() => {
+                        hiddeFullScreenLoading()
+                    })
 
                 } else {
                     console.log("Sign up failed")
