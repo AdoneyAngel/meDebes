@@ -51,6 +51,13 @@ class User {
         })
     }
 
+    static async getUserProfile (id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/getUserProfile", {id})
+        .then(res => {
+            return res.data[0][0]
+        })
+    }
+
     static async loginLocal(mail) {
         await this.getUserByMail(mail).then(userProfile => {
 
@@ -59,6 +66,26 @@ class User {
             LocalData.login(userProfile.id, mail, userProfile.name)
 
             return true
+        })
+    }
+
+    static async getUserProfileByInfo (info) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/getUserByInfo", {info})
+        .then(res => {
+            if (res.data[0][0]) {
+                const data = res.data[0][0]
+
+                const profile = {
+                    id: data.id,
+                    name: data.name,
+                    mail: data.mail
+                }
+
+                return profile        
+
+            } else {
+                return false
+            }
         })
     }
 }

@@ -1,0 +1,21 @@
+.addContactForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.addContactForm > label {
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+.addContactForm > input {
+    background-color: white;
+    border: 2px solid #dfdfdf;
+    padding: 15px 20px;
+    box-shadow: none;
+}
+.addContactForm > button {
+    margin-top: 25px;
+    border-radius: 100px;
+    padding: 5px 15px;
+}

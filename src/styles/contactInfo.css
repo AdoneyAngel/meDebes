@@ -1,0 +1,68 @@
+#contactInfo {
+    animation: showInfo .4s ease-out;
+}
+#contactInfo h1 {
+    margin: 20px 0;
+    text-decoration: underline;
+}
+#contactInfo p {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    padding: 10px 35px;
+    margin: 5px 0;
+    position: relative;
+}
+#contactInfo p::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 10px;
+    color: #dfdfdf;
+}
+#contactInfo p.contactInfoName::after {
+    content: "~";
+}
+#contactInfo p.contactInfoMail::after {
+    content: "@";
+}
+#contactInfo button {
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+}
+button.deleteContactButton {
+    background: var(--warning-red);
+    color: white;
+}
+
+#deleteContact {
+    animation: showInfo .4s ease-out;
+}
+#deleteContact h1 {
+    margin: 20px 0;
+    font-size: 23px;
+    text-decoration: underline;
+}
+#deleteContact .options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#deleteContact button {
+    margin: 0 5px;
+}
+.cancelDeleteButton {
+    background-color: var(--primary-green);
+}
+
+@keyframes showInfo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
