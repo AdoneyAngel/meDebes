@@ -7,7 +7,8 @@
     justify-content: center;
     align-items: center;
     box-shadow: -3px 0px 10px var(--primary-green), 3px 0px 10px var(--primary-red);
-    animation: loadingIcon 1s ease-in-out infinite alternate-reverse;
+    z-index: 100;
+    margin: 10px auto;
 }
 #loadingIcon::after {
     content: "";

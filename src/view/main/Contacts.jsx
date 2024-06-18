@@ -6,6 +6,7 @@ import PageHeader from "../../components/PageHeader"
 import { useNavigate } from "react-router-dom"
 import AddContact from "../../components/popups/AddContact"
 import ContactInfo from "../../components/popups/ContactInfo"
+import LoadingIcon from "../../components/LoadingIcon"
 
 export default function Contacts() {
     const routerNavigation = useNavigate()
@@ -15,6 +16,8 @@ export default function Contacts() {
     const [addContacts, setAddContacts] = new useState(false)
     const [contactInfo, setContactInfo] = new useState(false)
     const [contactId, setContactId] = new useState(-1)
+
+    const [loadingContacts, setLoadingContacts] = new useState(false)
 
     useEffect(() => {
         loadContacts()
@@ -44,9 +47,12 @@ export default function Contacts() {
 
     const loadContacts = async () => {
         const userId = LocalData.getData("id")
+
+        setLoadingContacts(true)
         
         Contact.getContacsProfiles(userId)
         .then (res => {
+            setLoadingContacts(false)
             setContacts(res)
         })
     }
@@ -68,6 +74,7 @@ export default function Contacts() {
                 <button onClick={showAddContact}>Añadir</button>
 
                 <div className="contactList">
+                    {loadingContacts ? <LoadingIcon /> : null}
                     {
                         contacts.map(contactItem => {
                             return (
