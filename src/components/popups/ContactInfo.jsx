@@ -6,8 +6,10 @@ import "../../styles/contactInfo.css"
 
 export default function ContactInfo({close, id: contactId}) {
     const [contactInfo, setContactInfo] = new useState({})
-
     const [showDeleteContact, setShowDeleteContact] = new useState(false)
+    const [showModifyName, setShowModifyName] = new useState(false)
+
+    const [modifiedContactName, setModifiedContactName] = new useState("")
 
     const getContactInfo = async () => {
         const userId = LocalData.getData("id")
@@ -39,16 +41,35 @@ export default function ContactInfo({close, id: contactId}) {
         }
     }
 
+    const modifyContactName = async (e) => {
+        e.preventDefault()
+
+        if (modifiedContactName.length > 0) {
+            const userId = LocalData.getData("id")
+
+            Contact.renameContact(userId, contactInfo.id, modifiedContactName)
+            .then (nameModified => {
+                if (nameModified) {
+                    close()
+
+                } else {
+                    console.log("Error renaming contact")
+                }
+            })
+        }
+    }
+
     useEffect(() => {
         getContactInfo()
+        setModifiedContactName("")
     }, [])
 
     return (
         <PopUp onClick={close}>
             {
-                contactInfo && !showDeleteContact ? (
+                contactInfo && !showDeleteContact && !showModifyName ? (
                     <div id="contactInfo">
-                        <h1>{contactInfo.nickname}</h1>
+                        <h1 onClick={() => setShowModifyName(true)}>{contactInfo.nickname}</h1>
                         <p className="contactInfoName">{contactInfo.name}</p>
                         <p className="contactInfoMail">{contactInfo.mail}</p>
                         <button onClick={() => setShowDeleteContact(true)} className="deleteContactButton">Eliminar</button>
@@ -66,6 +87,18 @@ export default function ContactInfo({close, id: contactId}) {
                         </div>
 
                     </div>
+                ) : null
+            }
+            {
+                showModifyName ? (
+                    <form onSubmit={e => modifyContactName(e)} id="modifyContactName">
+                        <h1>{contactInfo.nickname}</h1>
+                        <input onChange={(e) => setModifiedContactName(e.target.value)} type="text" placeholder="Nuevo nombre"/>
+                        <div className="options">
+                            <button type="button" onClick={() => setShowModifyName(false)}>Cancelar</button>
+                            <button type="submit" className="modifyNameButton">Cambiar</button>
+                        </div>
+                    </form>
                 ) : null
             }
         </PopUp>
