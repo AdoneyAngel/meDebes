@@ -1,0 +1,56 @@
+#returnsList {
+    padding: 15px;
+    border-radius: 7px;
+    position: relative;
+    margin-bottom: 60px;
+}
+#returnsList.to {
+    background: var(--primary-red);
+}
+#returnsList.from {
+    background: var(--primary-green);
+}
+#returnsList > h1 {
+    position: absolute;
+    top: 0;
+    transform: translateY(calc(-100% - 10px));
+    font-size: 17px;
+    font-weight: normal;
+    margin-left: 5px;
+    opacity: .8;
+}
+.returnItem {
+    margin-top: 25px;
+    margin-bottom: 45px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+}
+.returnItem:last-child{
+    margin-bottom: 0px;
+}
+.returnItem .returnName {
+    position: absolute;
+    transform: translateY(-30px);
+    margin-left: 15px;
+    font-weight: 500;
+    font-size: 17px;
+    top: 0;
+    left: 0;
+}
+.returnItem .returnCost {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+#returnsList.to .returnItem .returnCost {
+    color: var(--warning-red);
+}
+#returnsList.from .returnItem .returnCost {
+    color: var(--secondary-green);
+}

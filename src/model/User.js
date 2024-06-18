@@ -59,9 +59,7 @@ class User {
     }
 
     static async loginLocal(mail) {
-        await this.getUserByMail(mail).then(userProfile => {
-
-            console.log(userProfile.name)
+        return await this.getUserByMail(mail).then(userProfile => {
 
             LocalData.login(userProfile.id, mail, userProfile.name)
 
@@ -86,6 +84,13 @@ class User {
             } else {
                 return false
             }
+        })
+    }
+
+    static async userHaveNotifications (userId) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/userHaveNotification", {id: userId})
+        .then(res => {
+            return res.data[0].have == 1
         })
     }
 }

@@ -49,15 +49,16 @@ function SignUp() {
         //Check if mail exist
 
         await User.getUserByMail(mail).then(async mailRes => {
+                
+            console.log(mailRes)
 
-            if (!mailRes.length) {
-                console.log(mailRes)
+            if (mailRes == undefined) {
 
                 //If dont exist, check if name exist
 
                 await User.getUserByName(name).then(nameRes => {
                     console.log(nameRes)
-                    if (nameRes.length) {
+                    if (nameRes != undefined) {
                         
                         setValidNameMail(false)
                         showNotifyErr("El nombre ya está en uso")

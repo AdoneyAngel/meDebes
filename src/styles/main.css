@@ -1,0 +1,66 @@
+.paymentCircleContainer {
+    max-width: 300px;
+    max-height: 300px;
+    width: 55vmin;
+    height: 55vmin;
+    margin-top: 70px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.body {
+    width: 85%;
+    height: 50dvh;
+    margin: auto;
+    margin-top: 50px;
+    overflow-y: scroll;
+    z-index: -1;
+}
+.alertContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    animation: notificationMoving 1.5s cubic-bezier(0.39, 1.2, 0.75, 1.25) infinite;
+}
+.alertContainer img {
+    width: 100%;
+    filter: drop-shadow(0px -3px 3px var(--primary-green)) drop-shadow(0px 3px 3px var(--primary-red));
+    animation: notificationShadowMoving 1.5s cubic-bezier(0.39, 1.2, 0.75, 1.25) infinite;
+    animation-delay: 1.25s;
+}
+
+@keyframes notificationShadowMoving {
+    0% {
+        filter: drop-shadow(4px -3px 3px var(--primary-green)) drop-shadow(0px 3px 3px var(--primary-red));
+    }
+    50% {
+        filter: drop-shadow(-4px -3px 3px var(--primary-green)) drop-shadow(0px 3px 3px var(--primary-red));
+    }
+    100% {
+        filter: drop-shadow(4px -3px 3px var(--primary-green)) drop-shadow(0px 3px 3px var(--primary-red));
+    }
+}
+
+@keyframes notificationMoving {
+    0% {
+        transform-origin: top center;
+        transform: rotate(0deg);
+    }
+    50% {
+        transform-origin: top center;
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform-origin: top center;
+        transform: rotate(0deg);
+    }
+}
