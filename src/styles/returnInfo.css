@@ -1,0 +1,52 @@
+#returnInfo {
+    padding: 5px;
+}
+#returnInfo > h1 {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 20px 0;
+    margin-bottom: 30px;
+}
+#returnInfo > .usersContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+    height: fit-content;
+    position: relative;
+}
+#returnInfo > .usersContent::before {
+    content: "";
+    display: flex;
+    left: calc(50% + 3.75px);
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-left: 15px solid rgba(0, 0, 0, 0.315);
+    position: absolute;
+}
+#returnInfo > .usersContent .user:first-child {
+    margin-right: auto;
+}
+#returnInfo > .usersContent .user:last-child {
+    margin-left: auto;
+}
+#returnInfo > .usersContent .user {
+    padding: 5px;
+    padding-top: 20px;
+    height: 100%;
+    width: 80%;
+    box-shadow: 0px 0px 15px -2px #dfdfdf, 0px 0px 5px 0px rgba(0, 0, 0, 0.096), inset 0px 0px 5px 0px #dfdfdf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    font-size: .9rem;
+    position: relative;
+}
+#returnInfo > .usersContent .userHead {
+    position: absolute;
+    font-size: .6rem;
+    top: 7px;
+    opacity: .5;
+}

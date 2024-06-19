@@ -7,7 +7,7 @@ export default function MainHeader ({haveNotification, showNotifications}) {
 
     return (
         <div id="mainHeader">
-            <button className="headerButton" id="addReturnButton"><img src={plusIcon} /></button>
+            <Link to="/create" className="headerButton" id="addReturnButton"><img src={plusIcon} /></Link>
             <div className={haveNotification?"alertContainer haveNotifications" : "alertContainer"} onClick={showNotifications}>
                 <img src={notificationIcon} />
             </div> 

@@ -6,6 +6,7 @@ import Login from "./view/access/Login.jsx"
 import SignUp from "./view/access/SignUp.jsx"
 import Main from "./view/main/Main.jsx"
 import Contacts from "./view/main/Contacts.jsx"
+import CreateView from "./view/create/CreateView.jsx"
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
         path: "/contacts",
         element: <Contacts />,
         basename: "contacts"
+    },
+    {
+        path: "/create",
+        element: <CreateView />,
+        basename: "create"
     }
 ])
 

@@ -37,13 +37,10 @@ export default class Return {
         return await Axios.post(process.env.REACT_APP_API_URL + "/getCreationRequests_to", {id: user_id})
         .then(res => {
             return res.data[0].map (current => {
-                let date = current.date.split("T")[0].replaceAll("-", "/")
-                let hour = current.date.split("T")[1].split("Z")[0]
+                const dateData = new Date(current.date)
                 
-                date = date.split("/")
-                date = date[2]+"/"+date[1]+"/"+date[0]
-
-                hour = hour.slice(0, hour.length-4)
+                const date = dateData.getDate()+"/"+dateData.getMonth()+1+"/"+dateData.getFullYear()
+                const hour = dateData.getHours()+":"+ (dateData.getMinutes()===0?"00":dateData.getMinutes())
 
                 return {
                     ...current,
@@ -56,13 +53,10 @@ export default class Return {
         return await Axios.post(process.env.REACT_APP_API_URL + "/getHistoryRequests_to", {id: user_id})
         .then(res => {
             return res.data[0].map (current => {
-                let date = current.date.split("T")[0].replaceAll("-", "/")
-                let hour = current.date.split("T")[1].split("Z")[0]
+                const dateData = new Date(current.date)
                 
-                date = date.split("/")
-                date = date[2]+"/"+date[1]+"/"+date[0]
-
-                hour = hour.slice(0, hour.length-4)
+                const date = dateData.getDate()+"/"+dateData.getMonth()+1+"/"+dateData.getFullYear()
+                const hour = dateData.getHours()+":"+ (dateData.getMinutes()===0?"00":dateData.getMinutes())
 
                 return {
                     ...current,
@@ -75,13 +69,10 @@ export default class Return {
         return await Axios.post(process.env.REACT_APP_API_URL + "/getFinishRequests_to", {id: user_id})
         .then(res => {
             return res.data[0].map (current => {
-                let date = current.date.split("T")[0].replaceAll("-", "/")
-                let hour = current.date.split("T")[1].split("Z")[0]
+                const dateData = new Date(current.date)
                 
-                date = date.split("/")
-                date = date[2]+"/"+date[1]+"/"+date[0]
-
-                hour = hour.slice(0, hour.length-4)
+                const date = dateData.getDate()+"/"+dateData.getMonth()+1+"/"+dateData.getFullYear()
+                const hour = dateData.getHours()+":"+ (dateData.getMinutes()===0?"00":dateData.getMinutes())
 
                 return {
                     ...current,
@@ -116,6 +107,19 @@ export default class Return {
         .then(res => {
             console.log(res.data)
             return res.data
+        })
+    }
+    static async createReturnRequest (user_from, user_to, money, concept) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/createCreationRequest", {user_from, user_to, money, concept})
+        .then(res => {
+            console.log(res.data)
+            return res.data
+        })
+    }
+    static async getReturnData(return_id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/getReturnData", {id: return_id})
+        .then(res => {
+            return res.data[0][0]
         })
     }
 }

@@ -1,0 +1,84 @@
+#createView {
+    height: 100%;
+}
+#createView h1{
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+.createViewBody {
+    width: 100%;
+}
+.page {
+    display: block;
+    width: 85%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: showPage .4s ease-in-out;
+    transform-origin: center;
+}
+.page:first-of-type {
+    animation: none;
+}
+.createHiddenPage {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+}
+.moneyInput {
+    display: block;
+    margin: auto;
+    width: 200px;
+    border: none;
+    border-bottom: 2px solid #dfdfdf;
+    border-radius: 0;
+}
+.moneyContent {
+    width: 200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+.moneyContent::after {
+    content: "€";
+    margin-left: 10px;
+}
+.conceptArea {
+    display: block;
+    margin: auto;
+    width: 80%;
+    border-radius: 5px;
+    border: 2px solid #dfdfdf;
+    padding: 15px;
+    resize: none;
+}
+
+.nextPageButton {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    background: white;
+    font-size: 1.2rem;
+}
+
+@keyframes showPage {
+    0% {
+        transform: translateX(-47%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}

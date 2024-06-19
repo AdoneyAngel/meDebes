@@ -1,26 +1,19 @@
 import { useEffect, useState } from "react"
 import "../../styles/contacts.css"
-import Contact from "../../model/Contact"
-import LocalData from "../../model/localData"
 import PageHeader from "../../components/PageHeader"
 import { useNavigate } from "react-router-dom"
 import AddContact from "../../components/popups/AddContact"
 import ContactInfo from "../../components/popups/ContactInfo"
-import LoadingIcon from "../../components/LoadingIcon"
+import ContactsList from "../../components/ContactsList"
 
 export default function Contacts() {
     const routerNavigation = useNavigate()
-
-    const [contacts, setContacts] = new useState([])
 
     const [addContacts, setAddContacts] = new useState(false)
     const [contactInfo, setContactInfo] = new useState(false)
     const [contactId, setContactId] = new useState(-1)
 
-    const [loadingContacts, setLoadingContacts] = new useState(false)
-
     useEffect(() => {
-        loadContacts()
     }, [])
 
     const goBack = () => {
@@ -32,7 +25,6 @@ export default function Contacts() {
     }
     const hideAddContact = () => {
         setAddContacts(false)
-        loadContacts()
     }
 
     const showContactInfo = (id) => {
@@ -42,19 +34,6 @@ export default function Contacts() {
     const hideContactInfo = (id) => {
         setContactId(-1)
         setContactInfo(false)
-        loadContacts()
-    }
-
-    const loadContacts = async () => {
-        const userId = LocalData.getData("id")
-
-        setLoadingContacts(true)
-        
-        Contact.getContacsProfiles(userId)
-        .then (res => {
-            setLoadingContacts(false)
-            setContacts(res)
-        })
     }
 
     return (
@@ -70,22 +49,8 @@ export default function Contacts() {
             <PageHeader back={goBack}/>
             <h1>Contactos</h1>
             <section className="body">
-                
                 <button onClick={showAddContact}>Añadir</button>
-
-                <div className="contactList">
-                    {loadingContacts ? <LoadingIcon /> : null}
-                    {
-                        contacts.map(contactItem => {
-                            return (
-                                <div onClick={() => showContactInfo(contactItem.id)} className="contactItem" key={contactItem.id}>
-                                    <p className="contactNickname">{contactItem.nickname}</p>
-                                    <p className="contactMail">{contactItem.mail}</p>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
+                <ContactsList onClick={showContactInfo}/>
             </section>
         </div>
     )

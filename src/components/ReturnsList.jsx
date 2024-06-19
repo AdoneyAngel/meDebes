@@ -3,7 +3,7 @@ import LocalData from "../model/localData"
 import Return from "../model/Return"
 import "../styles/returnsList.css"
 
-export default function ReturnsList ({of}) {
+export default function ReturnsList ({of, onClick}) {
 
     const [returnsList, setReturnsList] = new useState([])
 
@@ -35,7 +35,7 @@ export default function ReturnsList ({of}) {
                     {
                         returnsList.map(currentData => {
                             return(
-                                <div className="returnItem" key={currentData.id}>
+                                <div onClick={() => onClick(currentData.id)} className="returnItem" key={currentData.id}>
                                     <p className="returnName">{currentData.nickname}</p>
                                     <p className="returnConcept">{currentData.concept}</p>
                                     <div className="returnCost">{currentData.total}€</div>
