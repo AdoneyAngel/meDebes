@@ -27,22 +27,29 @@ export default function ReturnsList ({of}) {
     }, [])
 
     return (
-        <div id="returnsList" className={of === "to" ? "to" : "from"}>
-            <h1>{of === "to" ? "Debes" : "Te deben"}</h1>
-            {
-                returnsList.map(currentData => {
-                    return(
-                        <div className="returnItem" key={currentData.id}>
-                            <p className="returnName">{currentData.nickname}</p>
-                            <p className="returnConcept">{currentData.concept}</p>
-                            <div className="returnCost">{currentData.total}€</div>
-                        </div>
-                    )
-                })
-            }
-            {
-                returnsList.length == 0 ? <h2>Vacío</h2> : null
-            }
-        </div>
+        <>
+        {
+            returnsList.length ? (
+                <div id="returnsList" className={of === "to" ? "to" : "from"}>
+                    <h1>{of === "to" ? "Debes" : "Te deben"}</h1>
+                    {
+                        returnsList.map(currentData => {
+                            return(
+                                <div className="returnItem" key={currentData.id}>
+                                    <p className="returnName">{currentData.nickname}</p>
+                                    <p className="returnConcept">{currentData.concept}</p>
+                                    <div className="returnCost">{currentData.total}€</div>
+                                </div>
+                            )
+                        })
+                    }
+                    {
+                        returnsList.length == 0 ? <h2>Vacío</h2> : null
+                    }
+                </div>                
+            ) : null
+        }
+        </>
+
     )
 }

@@ -5,10 +5,20 @@
     margin-bottom: 60px;
 }
 #returnsList.to {
-    background: var(--primary-red);
+    background: white;
+    border: 2px solid var(--primary-red);
+    box-shadow: 0px 0px 10px -2px var(--primary-red);
 }
 #returnsList.from {
-    background: var(--primary-green);
+    background: white;
+    border: 2px solid var(--primary-green);
+    box-shadow: 0px 0px 10px -2px var(--primary-green);
+}
+#returnsList.to .returnItem {
+    background-color: var(--primary-red);
+}
+#returnsList.from .returnItem {
+    background-color: var(--primary-green);
 }
 #returnsList > h1 {
     position: absolute;
@@ -22,7 +32,6 @@
 .returnItem {
     margin-top: 25px;
     margin-bottom: 45px;
-    background-color: white;
     border-radius: 5px;
     display: flex;
     align-items: center;

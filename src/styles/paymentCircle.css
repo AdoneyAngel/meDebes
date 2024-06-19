@@ -7,9 +7,12 @@
     width: 100%;
     border-radius: 100%;
     position: relative;
+    box-shadow: 0px -10px 15px var(--primary-green), 0px 10px 15px var(--primary-red), inset 0px 5px 5px rgba(146, 255, 150, 0.522), inset 0px -5px 5px rgba(255, 137, 112, 0.522), 0px 0px 5px rgba(0, 0, 0, 0.123);
+    animation: 1.3s showPaymentCircle ease-out;
+    background-color: white;
 }
 #paymentCircle .circleTop {
-    background-color: var(--primary-green);
+    border-bottom: 1px solid #dfdfdf;
     position: absolute;
     top: 0;
     width: 100%;
@@ -21,13 +24,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px -5px 10px var(--primary-green);
+    /* box-shadow: 0px -7px 20px -3px var(--primary-green), -7px 0px 20px -3px var(--primary-green), 7px 0px 20px -3px var(--primary-green), inset 0px 0px 10px var(--primary-green); */
 }
 #paymentCircle .circleTop p {
-    transform: translateY(-15px);
+    transform: translateY(-10px);
+}
+#paymentCircle .circleTop h1 {
+    transform: translateY(5px);
 }
 #paymentCircle .circleBottom {
-    background-color: var(--primary-red);
+    border-top: 1px solid #dfdfdf;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -39,17 +45,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 5px 10px var(--primary-red);
+    /* box-shadow: 0px 7px 20px -3px var(--primary-red), -7px 0px 20px -3px var(--primary-red), 7px 0px 20px -3px var(--primary-red), inset 0px 0px 10px var(--primary-red); */
 }
 #paymentCircle .circleBottom p {
-    transform: translateY(15px);
+    transform: translateY(10px);
+}
+#paymentCircle .circleBottom h1 {
+    transform: translateY(-5px);
 }
 
 #paymentCircle p {
     font-size: .6rem;
-    opacity: .8;
+    opacity: .6;
 }
 #paymentCircle h1 {
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 700;
+}
+
+@keyframes showPaymentCircle {
+    0% {
+        box-shadow: 0px 0px 0px var(--primary-green), 0px 0px 0px var(--primary-red), inset 0px 0px 0px rgba(146, 255, 150, 0.522), inset 0px -0px 0px rgba(255, 137, 112, 0.522), 0px 0px 0px rgba(0, 0, 0, 0.123);
+    }
+    100% {
+        box-shadow: 0px -10px 15px var(--primary-green), 0px 10px 15px var(--primary-red), inset 0px 5px 5px rgba(146, 255, 150, 0.522), inset 0px -5px 5px rgba(255, 137, 112, 0.522), 0px 0px 5px rgba(0, 0, 0, 0.123);
+    }
 }

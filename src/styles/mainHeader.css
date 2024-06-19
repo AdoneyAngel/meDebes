@@ -1,5 +1,5 @@
 #mainHeader {
-    position: absolute;
+    position: sticky;
     top: 0;
     left: 0;
     height: 45px;
@@ -7,6 +7,9 @@
     display: flex;
     align-items: center;
     width: calc(100% - 20px);
+    z-index: 2;
+    background: white;
+    margin-bottom: 20px;
 }
 #mainHeader img {
     height: 100%;
@@ -19,16 +22,47 @@
     justify-content: center;
     align-items: center;
     padding: 0;
+    background: white;
+    border: 1px solid #dfdfdf;
 }
 #addReturnButton > img {
     width: 70%;
     height: 70%;
 }
 #contactsButton {
-    margin-left: auto;
     text-decoration: none;
     color: black;
-    background: #dfdfdf;
+    background: white;
     padding: 5px 15px;
+    border: 1px solid #dfdfdf;
     border-radius: 100px;
+}
+.alertContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    z-index: -1;
+    margin-left: auto;
+    margin-right: 10px;
+    position: relative;
+}
+.alertContainer img {
+    width: 95%;
+    height: 100%;
+    /* filter: drop-shadow(0px -1px 3px var(--inverted-primary-green)) drop-shadow(0px 1px 3px var(--inverted-primary-red)) invert(1); */
+    opacity: .7;
+}
+.haveNotifications::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-color: var(--warning-red);
+    position: absolute;
+    bottom: 5px;
+    right: 3px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 10px var(--warning-red);
 }
