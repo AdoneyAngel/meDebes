@@ -6,7 +6,9 @@ export default function PopUp ({onClick, children}) {
         <div id="popup">
             <div className="onclikArea" onClick={onClick}></div>
             <div id="popupChild">
-                {children}
+                <div className="popupcontent">
+                    {children}
+                </div>
             </div>
         </div>
     )

@@ -33,13 +33,16 @@ export default class Return {
             return res.data[0]
         })   
     }
-    static async getCreationRequests(user_id) {
-        return await Axios.post(process.env.REACT_APP_API_URL + "/getCretionRequests_to", {id: user_id})
+    static async getCreationRequests_to(user_id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/getCreationRequests_to", {id: user_id})
         .then(res => {
             return res.data[0].map (current => {
-                const date = current.date.split("T")[0].replaceAll("-", "/")
+                let date = current.date.split("T")[0].replaceAll("-", "/")
                 let hour = current.date.split("T")[1].split("Z")[0]
                 
+                date = date.split("/")
+                date = date[2]+"/"+date[1]+"/"+date[0]
+
                 hour = hour.slice(0, hour.length-4)
 
                 return {
@@ -47,6 +50,72 @@ export default class Return {
                     date: date + " " + hour
                 }
             })
+        })
+    }
+    static async getHistoryRequests_to(user_id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/getHistoryRequests_to", {id: user_id})
+        .then(res => {
+            return res.data[0].map (current => {
+                let date = current.date.split("T")[0].replaceAll("-", "/")
+                let hour = current.date.split("T")[1].split("Z")[0]
+                
+                date = date.split("/")
+                date = date[2]+"/"+date[1]+"/"+date[0]
+
+                hour = hour.slice(0, hour.length-4)
+
+                return {
+                    ...current,
+                    date: date + " " + hour
+                }
+            })
+        })
+    }
+    static async getFinishRequests_to(user_id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/getFinishRequests_to", {id: user_id})
+        .then(res => {
+            return res.data[0].map (current => {
+                let date = current.date.split("T")[0].replaceAll("-", "/")
+                let hour = current.date.split("T")[1].split("Z")[0]
+                
+                date = date.split("/")
+                date = date[2]+"/"+date[1]+"/"+date[0]
+
+                hour = hour.slice(0, hour.length-4)
+
+                return {
+                    ...current,
+                    date: date + " " + hour
+                }
+            })
+        })
+    }
+    static async acceptCreation (request_id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/acceptCreation", {id: request_id})
+        .then(res => {
+            console.log(res.data)
+            return res.data
+        })
+    }
+    static async rejectCreation (request_id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/rejectCreation", {id: request_id})
+        .then(res => {
+            console.log(res.data)
+            return res.data
+        })
+    }
+    static async acceptHistory (request_id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/acceptHistory", {id: request_id})
+        .then(res => {
+            console.log(res.data)
+            return res.data
+        })
+    }
+    static async rejectHistory (request_id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/rejectHistory", {id: request_id})
+        .then(res => {
+            console.log(res.data)
+            return res.data
         })
     }
 }

@@ -12,6 +12,7 @@ export default function Main () {
 
     const [haveNotifications, setHaveNotifications] = new useState(false)
     const [notificationPanel, setNotificationPanel] = new useState(false)
+    const [reloadReturnsList, setReloadReturnsList] = new useState(false)
 
     const showNotifications = () => {
         setNotificationPanel(true)
@@ -28,6 +29,10 @@ export default function Main () {
         .then(haveNotification => {
             setHaveNotifications(haveNotification)
         })
+    }
+
+    const updateReturnsList = () => {
+
     }
 
     useEffect(() => {
@@ -61,10 +66,15 @@ export default function Main () {
 
 
             </div>
-            <div className="body">
-                <ReturnsList of="to"/>
-                <ReturnsList of="from"/>
-            </div>
+            {
+                !reloadReturnsList ? (
+                    <div className="body">
+                        <ReturnsList of="to"/>
+                        <ReturnsList of="from"/>
+                    </div>                    
+                ) : null
+            }
+
         </div>
     )
 }
