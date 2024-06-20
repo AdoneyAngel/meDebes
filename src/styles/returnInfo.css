@@ -2,7 +2,7 @@
     padding: 5px;
 }
 #returnInfo > h1 {
-    font-weight: 500;
+    font-weight: 800;
     font-size: 1.2rem;
     margin: 20px 0;
     margin-bottom: 30px;
@@ -30,7 +30,39 @@
 #returnInfo > .usersContent .user:last-child {
     margin-left: auto;
 }
-#returnInfo > .usersContent .user {
+#returnInfo > .usersContent .user, .money {
+    padding: 5px;
+    padding-top: 20px;
+    height: 70%;
+    width: 80%;
+    box-shadow: 0px 0px 15px -2px #dfdfdf, 0px 0px 5px 0px rgba(0, 0, 0, 0.096), inset 0px 0px 5px 0px #dfdfdf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    font-size: .9rem;
+    position: relative;
+}
+#returnInfo .userHead {
+    position: absolute;
+    font-size: .6rem;
+    top: 7px;
+    opacity: .5;
+}
+#returnInfo > .moneyContent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+    height: fit-content;
+    position: relative;
+    margin-top: 30px;
+}
+#returnInfo > .moneyContent::after {
+    content: "";
+}
+#returnInfo > .moneyContent .money {
     padding: 5px;
     padding-top: 20px;
     height: 100%;
@@ -44,9 +76,37 @@
     font-size: .9rem;
     position: relative;
 }
-#returnInfo > .usersContent .userHead {
-    position: absolute;
-    font-size: .6rem;
-    top: 7px;
-    opacity: .5;
+#returnInfo .historyContent {
+    margin-top: 35px;
+}
+#returnInfo .historyItem {
+    background-color: red;
+    margin: 15px 0;
+    border-radius: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px 15px;
+    place-items: center;
+}
+#returnInfo .historyContent .historyItemContent {
+    margin-right: auto;
+    font-size: .9rem;
+    font-weight: 600;
+}
+#returnInfo .historyContent .historyItemData {
+    margin-left: auto;
+    font-size: .7rem;
+    font-weight: 300;
+}
+#returnInfo .red{
+    background-color: var(--primary-red);
+    box-shadow: 0px 0px 10px -2px #f32b2b, inset 0px 0px 5px 0px #dd7c67;
+}
+#returnInfo .green{
+    background-color: var(--primary-green);
+    box-shadow: 0px 0px 10px -2px #2dc334, inset 0px 0px 5px 0px #81df84;
+}
+#returnInfo .grey{
+    background-color: #dfdfdf;
+    box-shadow: 0px 0px 10px -2px #939393, inset 0px 0px 5px 0px #cbcbcb;
 }

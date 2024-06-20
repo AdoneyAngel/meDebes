@@ -122,4 +122,10 @@ export default class Return {
             return res.data[0][0]
         })
     }
+    static async getReturnHistory(return_id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/getReturnHistory", {id: return_id})
+        .then (res => {
+            return res.data[0]
+        })
+    }
 }
