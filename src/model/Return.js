@@ -84,28 +84,36 @@ export default class Return {
     static async acceptCreation (request_id) {
         return await Axios.post(process.env.REACT_APP_API_URL + "/acceptCreation", {id: request_id})
         .then(res => {
-            console.log(res.data)
             return res.data
         })
     }
     static async rejectCreation (request_id) {
         return await Axios.post(process.env.REACT_APP_API_URL + "/rejectCreation", {id: request_id})
         .then(res => {
-            console.log(res.data)
             return res.data
         })
     }
     static async acceptHistory (request_id) {
         return await Axios.post(process.env.REACT_APP_API_URL + "/acceptHistory", {id: request_id})
         .then(res => {
-            console.log(res.data)
             return res.data
         })
     }
     static async rejectHistory (request_id) {
         return await Axios.post(process.env.REACT_APP_API_URL + "/rejectHistory", {id: request_id})
         .then(res => {
-            console.log(res.data)
+            return res.data
+        })
+    }
+    static async acceptFinish (request_id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/acceptFinish", {id: request_id})
+        .then(res => {
+            return res.data
+        })
+    }
+    static async rejectFinish (request_id) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/rejectFinish", {id: request_id})
+        .then(res => {
             return res.data
         })
     }
@@ -126,6 +134,18 @@ export default class Return {
         return await Axios.post(process.env.REACT_APP_API_URL + "/getReturnHistory", {id: return_id})
         .then (res => {
             return res.data[0]
+        })
+    }
+    static async createPaymentRequest (id, user_from, amount) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/createPaymentRequest", {id, user_from, amount})
+        .then (res => {
+            return res.data
+        })
+    }
+    static async createFinishRequest (id, user_from) {
+        return await Axios.post(process.env.REACT_APP_API_URL + "/createFinishRequest", {id, user_from})
+        .then (res => {
+            return res.data
         })
     }
 }

@@ -4,6 +4,8 @@ import Return from "../../model/Return"
 import "../../styles/returnInfo.css"
 import LocalData from "../../model/localData"
 import Contact from "../../model/Contact"
+import moneyMoreIcon from "../../icons/moneyMore.png"
+import moneyLessIcon from "../../icons/moneyLess.png"
 
 export default function ReturnInfo ({id, close}) {
 
@@ -14,6 +16,54 @@ export default function ReturnInfo ({id, close}) {
 
     const [currentUserPosition, setCurrentUserPosition] = new useState("")
     const [anotherUserPosition, setAnotherUserPosition] = new useState("")
+
+    const [moneyAction, setMoneyAction] = new useState(false)
+    const [moneyActionType, setMoneyActionType] = new useState(0)
+    const [selectedMoney, setSelectedMoney] = new useState(0)
+
+    const showMoneyAction = (type) => {//+1 / -1
+        setMoneyActionType(type)
+        setMoneyAction(true)
+    }
+
+    const hideMoneyAction = () => {
+        setMoneyActionType(0)
+        setMoneyAction(false)
+    }
+
+    const createPayment = async () => {
+        if (selectedMoney > 0 && moneyActionType) {
+            const userId = LocalData.getData("id")
+
+            const amount = selectedMoney*moneyActionType
+
+            Return.createPaymentRequest(id, userId, amount)
+            .then (res => {
+                if (res) {
+                    close()
+
+                } else {
+                    console.log("falied creating payment request")
+                }
+            })
+        }
+    }
+
+    const createFinishRequest = async () => {
+        const userId = LocalData.getData("id")
+
+        if (userId) {
+            Return.createFinishRequest(id, userId)
+            .then (res => {
+                if (res) {
+                    close()
+
+                } else {
+                    console.log("failed creating finish request")
+                }
+            })
+        }
+    }
 
     const loadReturnData = async () => {
         if (id) {
@@ -81,7 +131,7 @@ export default function ReturnInfo ({id, close}) {
     return (
         <PopUp onClick={close}>
             {
-                data ? (
+                data && !moneyAction ? (
 
                 <div id="returnInfo">
                     <h1>{data.concept}</h1> 
@@ -117,9 +167,30 @@ export default function ReturnInfo ({id, close}) {
                         }
 
                     </section>
+
+                    <section className="optionButtons">
+                        <button className="grey" onClick={createFinishRequest}>Finalizar</button>
+                        <button className="red" onClick={() => showMoneyAction(1)}><img src={moneyMoreIcon} /></button>
+                        <button className="green" onClick={() => showMoneyAction(-1)}><img src={moneyLessIcon} /></button>
+                    </section>
                 </div>
 
-                ) : null
+                ) : (
+                    moneyAction ? (
+                        <div id="returnInfo" className="showViewAni moneyActionContainer">
+                            <h1>Cantidad a {moneyActionType === 1 ? "aumentar" : "disminuir"}</h1>
+
+                            <div className="inputContainer">
+                                <input onChange={e => setSelectedMoney(e.target.value)} className="moneyInput" type="number" placeholder="€" /><p>€</p>                                
+                            </div>
+
+                            <div className="buttonsContainer">
+                                <button className="cancel" onClick={hideMoneyAction}>Cancelar</button>
+                                <button onClick={createPayment}>{moneyActionType === 1 ? "Aumentar" : "Disminuir"}</button>                                
+                            </div>
+                        </div>
+                    ) : null
+                )
             }
         </PopUp>
     )

@@ -35,14 +35,6 @@
     opacity: 0;
     display: none;
 }
-.moneyInput {
-    display: block;
-    margin: auto;
-    width: 200px;
-    border: none;
-    border-bottom: 2px solid #dfdfdf;
-    border-radius: 0;
-}
 .moneyContent {
     width: 200px;
     margin: auto;

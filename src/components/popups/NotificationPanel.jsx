@@ -91,6 +91,32 @@ export default function NotificationPanel ({close}) {
         })
     }
 
+    const acceptFinish = async (id) => {
+        Return.acceptFinish(id)
+        .then(res => {
+            console.log(res)
+            if (res) {
+                close()
+
+            } else {
+                console.log("Error accepting finish request")
+            }
+        })
+    }
+
+    const rejectFinish = async (id) => {
+        Return.rejectFinish(id)
+        .then(res => {
+            console.log(res)
+            if (res) {
+                close()
+
+            } else {
+                console.log("Error rejecting finish request")
+            }
+        })
+    }
+
     useEffect(() => {
         loadCreationRequests()
         loadHistoryRequests()
@@ -122,7 +148,7 @@ export default function NotificationPanel ({close}) {
 
                     {
                         finishRequests.map(request => {
-                            return (<NotificationItem accept={acceptHistory} reject={rejectHistory} type="finish" key={request.id} info={request}/>)
+                            return (<NotificationItem accept={acceptFinish} reject={rejectFinish} type="finish" key={request.id} info={request}/>)
                         })
                     }
                 </div>
