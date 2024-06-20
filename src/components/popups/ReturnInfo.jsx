@@ -12,6 +12,9 @@ export default function ReturnInfo ({id, close}) {
     const [user_from_nickname, setUser_from_nickname] = new useState("")
     const [returnHistory, setReturnHistory] = new useState([])
 
+    const [currentUserPosition, setCurrentUserPosition] = new useState("")
+    const [anotherUserPosition, setAnotherUserPosition] = new useState("")
+
     const loadReturnData = async () => {
         if (id) {
             Return.getReturnData(id)
@@ -31,6 +34,9 @@ export default function ReturnInfo ({id, close}) {
                 if (res.user_from == userId) {
                     setUser_from_nickname("Tu")
 
+                    setCurrentUserPosition("right")
+                    setAnotherUserPosition("left")
+
                     Contact.getContactProfile(userId, res.user_to)
                     .then(contactProfile => {
                         setUser_to_nickname(contactProfile.nickname)
@@ -38,6 +44,9 @@ export default function ReturnInfo ({id, close}) {
 
                 } else {
                     setUser_to_nickname("Tu")
+
+                    setCurrentUserPosition("left")
+                    setAnotherUserPosition("right")
 
                     Contact.getContactProfile(userId, res.user_from)
                     .then(contactProfile => {
@@ -77,11 +86,6 @@ export default function ReturnInfo ({id, close}) {
                 <div id="returnInfo">
                     <h1>{data.concept}</h1> 
 
-                    <section className="usersContent">
-                        <div className="user"><p className="userHead">Envía</p>{user_to_nickname}</div>
-                        <div className="user"><p className="userHead">Recibe</p>{user_from_nickname}</div>
-                    </section>            
-
                     <section className="moneyContent">
                         <div className="money">
                             <p className="userHead">Faltan</p>
@@ -89,16 +93,22 @@ export default function ReturnInfo ({id, close}) {
                         </div>
                     </section>
 
+                    <section className="usersContent">
+                        <div className="user"><p className="userHead">Envía</p>{user_to_nickname}</div>
+                        <div className="user"><p className="userHead">Recibe</p>{user_from_nickname}</div>
+                    </section>            
+
                     <section className="historyContent">
-                        <div className="historyItem creationDate grey">
+                        <div id="right" className="historyItem creationDate grey">
                             <p className="historyItemContent">Creación</p>
                             <p className="historyItemData">{data.date}</p>
                         </div>
                         
                         {
                             returnHistory.map(currentHistory => {
+                                const userId = LocalData.getData("id")
                                 return (
-                                    <div className={currentHistory.amount < 0 ? "historyItem history green" : "historyItem history red"}>
+                                    <div key={currentHistory.id} id={currentHistory.user_from == userId ? currentUserPosition : anotherUserPosition} className={currentHistory.amount < 0 ? "historyItem history green" : "historyItem history red"}>
                                         <p className="historyItemContent">{currentHistory.amount > 0 ? "+"+currentHistory.amount : currentHistory.amount}€</p>
                                         <p className="historyItemData">{currentHistory.date}</p>
                                     </div>

@@ -1,5 +1,6 @@
 #returnInfo {
     padding: 5px;
+    width: 80dvw;
 }
 #returnInfo > h1 {
     font-weight: 800;
@@ -57,7 +58,7 @@
     place-items: center;
     height: fit-content;
     position: relative;
-    margin-top: 30px;
+    margin-bottom: 30px;
 }
 #returnInfo > .moneyContent::after {
     content: "";
@@ -80,33 +81,56 @@
     margin-top: 35px;
 }
 #returnInfo .historyItem {
-    background-color: red;
-    margin: 15px 0;
-    border-radius: 100px;
+    background-color: transparent;
+    margin: 25px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 10px 15px;
     place-items: center;
+    position: relative;
 }
 #returnInfo .historyContent .historyItemContent {
-    margin-right: auto;
     font-size: .9rem;
     font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 100px;
+    width: calc(80% - 30px);
+    text-align: center;
 }
 #returnInfo .historyContent .historyItemData {
-    margin-left: auto;
     font-size: .7rem;
     font-weight: 300;
 }
-#returnInfo .red{
+#returnInfo .red .historyItemContent{
     background-color: var(--primary-red);
     box-shadow: 0px 0px 10px -2px #f32b2b, inset 0px 0px 5px 0px #dd7c67;
 }
-#returnInfo .green{
+#returnInfo .green .historyItemContent{
     background-color: var(--primary-green);
     box-shadow: 0px 0px 10px -2px #2dc334, inset 0px 0px 5px 0px #81df84;
 }
-#returnInfo .grey{
+#returnInfo .grey .historyItemContent{
     background-color: #dfdfdf;
     box-shadow: 0px 0px 10px -2px #939393, inset 0px 0px 5px 0px #cbcbcb;
+}
+.historyContent #right .historyItemContent{
+    margin-left: auto;
+    grid-column: 2;
+}
+.historyContent #left .historyItemContent{
+    margin-right: auto;
+    grid-column: 1;
+}
+.historyContent #right .historyItemData{
+    margin-right: auto;
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.historyContent #left .historyItemData{
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    grid-column: 2;
+    grid-row: 1;
 }
