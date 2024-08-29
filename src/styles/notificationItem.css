@@ -72,6 +72,13 @@
 .red {
     background-color: var(--primary-red);
 }
+.yellow {
+    background-color: var(--yellow-green);
+}
+span.under {
+    font-size: .6rem;
+    letter-spacing: -.7px;
+}
 
 @keyframes showButtons{
     0% {

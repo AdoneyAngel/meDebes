@@ -68,22 +68,39 @@ export default function AddContact ({close}) {
 
     }
 
-    const addContact = async (e) => {
+    // const addContact = async (e) => {
+    //     e.preventDefault()
+
+    //     const userId = LocalData.getData("id")
+
+    //     if (userId) {
+    //         showLoading()
+
+    //         Contact.addContact(userId, contactId, nickname)
+    //         .then(res => {
+    //             hideLoading()
+
+    //             close()
+    //         })
+    //     }
+        
+    // }
+
+    const createRequest = async (e) => {
         e.preventDefault()
 
-        const userId = LocalData.getData("id")
+        const user_from = LocalData.getData("id")
 
-        if (userId) {
+        if (user_from) {
             showLoading()
 
-            Contact.addContact(userId, contactId, nickname)
+            Contact.createRequest(user_from, contactId, nickname)
             .then(res => {
                 hideLoading()
 
                 close()
             })
         }
-        
     }
 
     return (
@@ -101,7 +118,7 @@ export default function AddContact ({close}) {
             }
             {
                 validInfo ? (
-                    <form onSubmit={e => addContact(e)} className="addContactForm nicknameForm">
+                    <form onSubmit={e => createRequest(e)} className="addContactForm nicknameForm">
                         <label>Nombre</label>
                         <input onChange={e => setNickname(e.target.value)} placeholder="Isi" type="text"/>
                         <button>Añadir</button>

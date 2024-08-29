@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import moneyIcon from "../../icons/money.png"
 import moneyMore from "../../icons/moneyMore.png"
 import moneyLess from "../../icons/moneyLess.png"
+import coolHand from "../../icons/coolhand.png"
 import "../../styles/notificationItem.css"
 
 export default function NotificationItem ({info: notificationData, type, accept, reject}) {
@@ -73,6 +74,31 @@ export default function NotificationItem ({info: notificationData, type, accept,
                     <img src={notificationData.amount > 0 ? moneyMore : moneyLess}/>
                     <p onClick={switchButtons} className="notificationContent">
                         ¿Finalizar <span className="boldConcept">{notificationData.concept}</span> de <span className="boldName">{notificationData.nickname}</span>?
+                    </p>
+                    <p className="notificationDate">
+                        {
+                            notificationData.date
+                        }
+                    </p>
+                    {
+                        opened ? (
+                            <div className="notificationButtons">
+                                <button className="cancelButton" onClick={() => reject(notificationData.id)}>Rechazar</button>
+                                <button className="acceptButton" onClick={() => accept(notificationData.id)}>Aceptar</button>
+                            </div>                                
+                        ) : null
+                    }
+                </div>                  
+            ) : null  
+        }
+        {
+            type === "contact" ? (
+                <div key={notificationData.id} id="notificationItem" className={opened ? "notificationOpened yellow" : "yellow"}>
+                    <img src={coolHand}/>
+                    <p onClick={switchButtons} className="notificationContent">
+
+                        Peticion de amistad por <span className="boldName">{notificationData.name} <span classname="under">({notificationData.mail})</span></span>
+
                     </p>
                     <p className="notificationDate">
                         {

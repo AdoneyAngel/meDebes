@@ -40,3 +40,49 @@
     z-index: 1;
     border-radius: 100px;
 }
+#notificationList {
+    transition: .5s;
+}
+.nextPage {
+    opacity: 0;
+    transform: translateX(10px);
+    transition: .5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.addContactInput {
+    background-color: white;
+    border: 2px solid #dfdfdf;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    padding: 15px 20px;
+    box-shadow: none;
+    font-weight: bold;
+}
+.nextPage .addContact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.nextPage .addContact .buttonSection {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nextPage .addContact .buttonSection button {
+    margin: 0 10px;
+    padding: 10px 20px;
+}
+.nextPage .addContact .buttonSection .cancel {
+    background-color: var(--primary-red);
+    color: white;
+}
+.nextPage .addContact .buttonSection .add {
+    background-color: var(--primary-green);
+    color: black;
+}
