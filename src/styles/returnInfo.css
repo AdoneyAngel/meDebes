@@ -1,5 +1,5 @@
 #returnInfo {
-    padding: 5px;
+    padding: 10px;
 }
 #returnInfo > h1 {
     font-weight: 800;
@@ -78,6 +78,7 @@
 }
 #returnInfo .historyContent {
     margin-top: 35px;
+    padding-bottom: 10px;
 }
 #returnInfo .historyItem {
     background-color: transparent;
