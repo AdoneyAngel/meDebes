@@ -21,9 +21,9 @@ export default function NotificationItem ({info: notificationData, type, accept,
         <>
         {
             type === "creation" ? (
-                <div key={notificationData.id} id="notificationItem" className={opened ? "notificationOpened red" : "red"}>
+                <div onClick={switchButtons} key={notificationData.id} id="notificationItem" className={opened ? "notificationOpened red" : "red"}>
                     <img src={moneyIcon}/>
-                    <p className="notificationContent" onClick={switchButtons}>
+                    <p className="notificationContent">
                         Debes {notificationData.money}€ a <span className="boldName">{notificationData.nickname}</span> por <span className="boldConcept">{notificationData.concept}</span>
                     </p>
                     <p className="notificationDate">
@@ -44,9 +44,9 @@ export default function NotificationItem ({info: notificationData, type, accept,
         }
         {
             type === "history" ? (
-                <div key={notificationData.id} id="notificationItem" className={opened ? "notificationOpened "+(notificationData.amount<0?"green":"red") : (notificationData.amount<0?"green":"red")}>
+                <div onClick={switchButtons} key={notificationData.id} id="notificationItem" className={opened ? "notificationOpened "+(notificationData.amount<0?"green":"red") : (notificationData.amount<0?"green":"red")}>
                     <img src={notificationData.amount > 0 ? moneyMore : moneyLess}/>
-                    <p onClick={switchButtons} className="notificationContent">
+                    <p className="notificationContent">
                         {
                             notificationData.amount > 0 ? "Aumento " : "Disminución "
                         }
@@ -70,9 +70,9 @@ export default function NotificationItem ({info: notificationData, type, accept,
         }
         {
             type === "finish" ? (
-                <div key={notificationData.id} id="notificationItem" className={opened ? "notificationOpened "+(notificationData.amount<0?"green":"red") : (notificationData.amount<0?"green":"red")}>
+                <div onClick={switchButtons} key={notificationData.id} id="notificationItem" className={opened ? "notificationOpened "+(notificationData.amount<0?"green":"red") : (notificationData.amount<0?"green":"red")}>
                     <img src={notificationData.amount > 0 ? moneyMore : moneyLess}/>
-                    <p onClick={switchButtons} className="notificationContent">
+                    <p className="notificationContent">
                         ¿Finalizar <span className="boldConcept">{notificationData.concept}</span> de <span className="boldName">{notificationData.nickname}</span>?
                     </p>
                     <p className="notificationDate">
@@ -93,9 +93,9 @@ export default function NotificationItem ({info: notificationData, type, accept,
         }
         {
             type === "contact" ? (
-                <div key={notificationData.id} id="notificationItem" className={opened ? "notificationOpened yellow" : "yellow"}>
+                <div onClick={switchButtons} key={notificationData.id} id="notificationItem" className={opened ? "notificationOpened yellow" : "yellow"}>
                     <img src={coolHand}/>
-                    <p onClick={switchButtons} className="notificationContent">
+                    <p className="notificationContent">
 
                         Peticion de amistad por <span className="boldName">{notificationData.name} <span classname="under">({notificationData.mail})</span></span>
 
