@@ -1,0 +1,72 @@
+.historyItem {
+    background: transparent;
+    border: 3px solid #dfdfdf;
+    border-radius: 10px;
+    padding: 7px;
+    padding-bottom: 45px;
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0;
+}
+.historyItem .itemDate {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    background-color: #dfdfdf;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.historyItem .itemDate p {
+    margin-left: auto;
+    text-align: left;
+    margin-right: 10px;
+    font-size: .7rem;
+    opacity: .6;
+    font-weight: 400;
+}
+.historyItem .itemContent p{
+    font-size: .8rem;
+}
+.historyItem span.boldname {
+    font-size: .8rem;
+    font-weight: bold;
+}
+.historyItem span.underline {
+    text-decoration: underline;
+    font-size: .8rem;
+    opacity: .6;
+}
+.historyItem .itemDate img {
+    height: 30px;
+    width: auto;
+    position: absolute;
+    left: 5px;
+    bottom: 2px;
+    opacity: .4;
+}
+.historyItem.green {
+    border: 3px solid var(--primary-green);
+}
+.historyItem.green .itemDate {
+    background-color: var(--primary-green);
+}
+.historyItem.red {
+    border: 3px solid var(--primary-red);
+}
+.historyItem.red .itemDate {
+    background-color: var(--primary-red);
+}
+.historyItem.grey {
+    border: 3px solid #dfdfdf;
+}
+.historyItem.grey .itemDate {
+    background-color: #dfdfdf;
+}
+.historyItem.yellow {
+    border: 3px solid var(--yellow-green);
+}
+.historyItem.yellow .itemDate {
+    background-color: var(--yellow-green);
+}

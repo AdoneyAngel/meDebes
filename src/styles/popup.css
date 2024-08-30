@@ -39,6 +39,18 @@
     background-color: transparent;
     z-index: -1;
 }
+.defaultPopUpTitle {
+    font-weight: normal;
+    font-size: 1.2rem;
+    margin: auto;
+    text-align: center;
+    position: sticky;
+    background: white;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    padding: 10px 0;
+}
 
 @keyframes showPopup {
     0% {
