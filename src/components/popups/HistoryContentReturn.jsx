@@ -24,7 +24,7 @@ export default function HistoryContentReturn ({item, user_id}) {
 
             <section className="itemContent">
                 <p>
-                    Devolución <span className="boldname">{item.concept} <span className="underline">({item.name})</span></span> creadaz
+                    Devolución <span className="boldname">{item.concept} <span className="underline">({item.name})</span></span> creada
                 </p>
 
             </section>
