@@ -2,18 +2,23 @@ import { useEffect, useState } from "react"
 import LocalData from "../model/localData"
 import Return from "../model/Return"
 import "../styles/returnsList.css"
+import LoadingIcon from "./LoadingIcon"
 
 export default function ReturnsList ({of, onClick}) {
 
     const [returnsList, setReturnsList] = new useState([])
+    const [loadingList, setLoadingList] = new useState(true)
 
     useEffect(() => {
+        setLoadingList(true)
+
         if (of === "to") {
             const userId = LocalData.getData("id")
 
             Return.getReturnsData_to(userId)
             .then(res => {
                 setReturnsList(res)
+                setLoadingList(false)
             })
 
         } else if(of === "from") {
@@ -22,6 +27,7 @@ export default function ReturnsList ({of, onClick}) {
             Return.getReturnsData_from(userId)
             .then(res => {
                 setReturnsList(res)
+                setLoadingList(false)
             })
         }
     }, [])
@@ -29,7 +35,7 @@ export default function ReturnsList ({of, onClick}) {
     return (
         <>
         {
-            returnsList.length ? (
+            returnsList.length && !loadingList ? (
                 <div id="returnsList" className={of === "to" ? "to" : "from"}>
                     <h1>{of === "to" ? "Debes" : "Te deben"}</h1>
                     {
@@ -47,7 +53,7 @@ export default function ReturnsList ({of, onClick}) {
                         returnsList.length == 0 ? <h2>Vacío</h2> : null
                     }
                 </div>                
-            ) : null
+            ) : loadingList ? <LoadingIcon /> : null
         }
         </>
 
