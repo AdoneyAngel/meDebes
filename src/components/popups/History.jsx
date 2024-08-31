@@ -9,6 +9,7 @@ import "../../styles/history.css"
 import HistoryContentFinish from "./HistoryContentFinish.jsx";
 import HistoryContentPayment from "./HistoryContentPayment.jsx";
 import HistoryContentReturn from "./HistoryContentReturn.jsx";
+import HistoryContentCreate from "./HistoryContentCreate.jsx";
 
 export default function History ({close, id}) {
     
@@ -50,7 +51,10 @@ export default function History ({close, id}) {
                                 historyItem.type == "payment" ? <HistoryContentPayment item={historyItem} user_id={LocalData.getData("id")}/> : null
                             }
                             {
-                                historyItem.type == "payment" ? <HistoryContentReturn item={historyItem} user_id={LocalData.getData("id")}/> : null
+                                historyItem.type == "return" ? <HistoryContentReturn item={historyItem} user_id={LocalData.getData("id")}/> : null
+                            }
+                            {
+                                historyItem.type == "create" ? <HistoryContentCreate item={historyItem} user_id={LocalData.getData("id")}/> : null
                             }
                             </div>
                         )

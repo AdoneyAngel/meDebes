@@ -4,6 +4,9 @@
     font-family: "Open Sans", sans-serif;
     font-size: 20px;
 }
+*:active {
+    transition: .3s ease-out;
+}
 :root {
     --primary-green: #92FF96;
     --inverted-primary-green: #6d0069;
@@ -31,7 +34,7 @@ h1 {
 button {
     background: #dfdfdf;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
     padding: 5px 10px;
 }
 button:hover {

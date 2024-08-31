@@ -6,18 +6,18 @@ import moneyIcon from "../../icons/money.png"
 
 export default function HistoryContentReturn ({item, user_id}) {
 
-    const [itemClass, setItemClass] = new useState("historyItem historyItemType_"+item.type)
+    const [itemClass, setItemClass] = new useState("historyItem historyItemType_"+item.type + " green")
 
     useEffect(() => {
-        if (item.accepted === 1) {
-            setItemClass("historyItem historyItemType_"+item.type + " green")
+        // if (item.accepted === 1) {
+        //     setItemClass("historyItem historyItemType_"+item.type + " green")
 
-        } else if (item.accepted === -1) {
-            setItemClass("historyItem historyItemType_"+item.type + " red")
+        // } else if (item.accepted === -1) {
+        //     setItemClass("historyItem historyItemType_"+item.type + " red")
 
-        }else {
-            setItemClass("historyItem historyItemType_"+item.type + " grey")
-        }
+        // }else {
+        //     setItemClass("historyItem historyItemType_"+item.type + " grey")
+        // }
     })
 
     return (
