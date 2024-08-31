@@ -38,13 +38,21 @@
     font-size: .8rem;
     opacity: .6;
 }
-.historyItem .itemDate img {
+.historyItem .itemDate .icons {
     height: 30px;
     width: auto;
     position: absolute;
-    left: 5px;
+    left: 0px;
     bottom: 2px;
+}
+.historyItem .itemDate img {
+    height: 30px;
+    width: auto;
     opacity: .4;
+    margin: 0 2.5px;
+}
+.historyItem .itemDate img.clockIcon {
+    opacity: .2;
 }
 .historyItem.green {
     border: 3px solid var(--primary-green);

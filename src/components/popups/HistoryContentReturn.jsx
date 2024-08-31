@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import DateTime from "../../model/DateTime"
 
+import clockIcon from "../../icons/clock.png"
 import moneyIcon from "../../icons/money.png"
 
 export default function HistoryContentReturn ({item, user_id}) {
@@ -30,7 +31,13 @@ export default function HistoryContentReturn ({item, user_id}) {
             </section>
 
             <section className="itemDate">
-                <img src={moneyIcon} />
+                <div className="icons">
+                    <img src={moneyIcon} />
+                    {
+                        item.accepted === 0 ? <img className="clockIcon" src={clockIcon}/> : null
+                    }                    
+                </div>
+
                 <p>
                     {DateTime.mysqlToApp(item.date)}
                 </p>

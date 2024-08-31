@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import DateTime from "../../model/DateTime"
 
-import moneyIcon from "../../icons/money.png"
+import clockIcon from "../../icons/clock.png"
 import moneyLessIcon from "../../icons/moneyLess.png"
 import moneyMoreIcon from "../../icons/moneyMore.png"
 
@@ -34,17 +34,22 @@ export default function HistoryContentPayment ({item, user_id}) {
                         item.accepted === 0 && item.user_to == user_id ? " recibida " : null
                     }
                     {
-                        item.accepted === 1 && item.user_to == user_id ? " procesada " : null
+                        item.accepted === 1 ? " procesada " : null
                     }
                     {
-                        item.accepted === -1 && item.user_to == user_id ? " rechazada " : null
+                        item.accepted === -1 ? " rechazada " : null
                     }
                 </p>
 
             </section>
 
             <section className="itemDate">
-                <img src={item.amount < 0 ? moneyLessIcon : moneyMoreIcon} />
+                <div className="icons">
+                    <img src={item.amount < 0 ? moneyLessIcon : moneyMoreIcon} />
+                    {
+                        item.accepted === 0 ? <img className="clockIcon" src={clockIcon}/> : null
+                    }                    
+                </div>
                 <p>
                     {DateTime.mysqlToApp(item.date)}
                 </p>
