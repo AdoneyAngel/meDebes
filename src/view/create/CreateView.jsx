@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom"
 import { useEffect, useState } from "react"
 import Return from "../../model/Return"
 import LocalData from "../../model/localData"
+import LoadingIcon from "../../components/LoadingIcon"
 
 export default function CreateView () {
 
@@ -16,6 +17,8 @@ export default function CreateView () {
     const [selectedMoney, setSelectedMoney] = new useState(0)
     const [selectedConcept, setSelectedConcept] = new useState("")
     const [selectedMethod, setSelectedMethod] = new useState(0) /*[-1= I owe] [1= he owe]*/
+
+    const [loading, setLoading] = new useState(false)
 
     const selectMethod = (method) => {
         setSelectedMethod(method)
@@ -142,7 +145,10 @@ export default function CreateView () {
                 <h1>Concepto de devolución</h1>
                 <div className="createViewBody">
                     <textarea onChange={e => selectConcept(e)} className="conceptArea" type="number" placeholder="Motivo"></textarea>
-                    <button onClick={endCreation} className="nextPageButton">Continuar</button>  
+                    {
+                        !loading ? <button onClick={endCreation} className="nextPageButton">Finalizar</button> : <p className="nextPageButton"><LoadingIcon /></p>
+                    }
+                    
                 </div>                
             </div>
         </div>
