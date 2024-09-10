@@ -35,7 +35,7 @@ export default function HistoryContentCreate ({item, user_id}) {
                         item.accepted != 0 ? "Solicitud devolución " : null
                     }
                     
-                    <span className="boldname">{item.concept} <span className="underline">({item.name})</span> [{item.money}€]</span>
+                    <span className="boldname">{item.concept} <span className="underline">({item.name})</span></span> [{item.money}€]
 
                     {
                         item.accepted == -1 ? " rechazada" : null
